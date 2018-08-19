@@ -1,6 +1,8 @@
 import MarketplaceService from './Service/MarketplaceService';
 import MarketplaceRepository from './Repository/MarketplaceRepository';
 import MarketplaceConfigInterface from "./ConfigInterface";
+import MapperInterface from "./Mapper/MapperInterface";
+import MarketplaceMapper from "./Mapper/MarketplaceMapper";
 
 export default class DIContainer {
 
@@ -30,6 +32,12 @@ export default class DIContainer {
     // }
 
     public getMarketplaceService(): MarketplaceService {
-        return new MarketplaceService(new MarketplaceRepository(this.config));
+        return new MarketplaceService(
+            new MarketplaceRepository(this.config, this.getMarketplaceMapper())
+        );
+    }
+
+    private getMarketplaceMapper(): MapperInterface {
+        return new MarketplaceMapper();
     }
 }

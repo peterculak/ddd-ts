@@ -6,7 +6,7 @@ import MarketplaceRepositoryInterface from "../Repository/MarketplaceRepositoryI
 export default class MarketplaceService implements MarketplaceServiceInterface {
     private repository: MarketplaceRepositoryInterface;
 
-    constructor(repository: MarketplaceRepositoryInterface) {
+    public constructor(repository: MarketplaceRepositoryInterface) {
         this.repository = repository;
     }
 

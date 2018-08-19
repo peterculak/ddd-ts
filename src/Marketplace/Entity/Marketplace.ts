@@ -11,8 +11,10 @@ export default class Marketplace {
         this.name = name;
     }
 
-    public static create(name: string): Marketplace {
-        return new Marketplace(name);
+    public static create(data: { name: string }): Marketplace {
+        return new Marketplace(
+            data.name
+        );
     }
 
     public getName(): string {
