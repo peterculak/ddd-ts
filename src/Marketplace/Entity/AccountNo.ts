@@ -1,10 +1,12 @@
+import AccountNoException from "./AccountNoException";
+
 export default class AccountNo {
     private accountno: string;
 
     private constructor(accountno: string) {
 
         if ('' === accountno) {
-            throw 'Account number can not be empty';
+            throw AccountNoException.empty();
         }
 
         this.accountno = accountno;

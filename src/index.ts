@@ -9,10 +9,8 @@ const DI = MarketplaceDIContainer.createWithConfig({
     let marketplaces = DI.getMarketplaceService();
     let collection = await marketplaces.findMarketplacesByAccountNumber(AccountNo.create('12346'));
 
-    let result = collection.next();
-    while (!result.done) {
-        console.log(result.value);
-        result = collection.next();
+    for (let marketplace of collection) {
+        console.log(marketplace);
     }
 
     console.log('Done');

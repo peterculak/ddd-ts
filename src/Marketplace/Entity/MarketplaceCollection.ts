@@ -13,6 +13,10 @@ export default class MarketplaceCollection implements Iterator<Marketplace> {
         return new MarketplaceCollection(marketplaces);
     }
 
+    [Symbol.iterator](): Iterator<Marketplace> {
+        return this;
+    }
+
     next(value?: any): IteratorResult<Marketplace> {
         return {
             done: this.index >= this.marketplaces.length,

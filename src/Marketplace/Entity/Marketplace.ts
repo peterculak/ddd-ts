@@ -1,7 +1,13 @@
+import MarketplaceException from "./MarketplaceException";
+
 export default class Marketplace {
     private name: string;
 
     private constructor(name: string) {
+        if ('' === name) {
+            throw MarketplaceException.emptyName();
+        }
+
         this.name = name;
     }
 
