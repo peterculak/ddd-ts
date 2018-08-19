@@ -1,9 +1,20 @@
-import Marketplace from './Marketplace/Marketplace';
-import MarketplaceCollection from './Marketplace/MarketplaceCollection';
+import MarketplaceDIContainer from './Marketplace/DIContainer';
+import AccountNo from './Marketplace/Entity/AccountNo';
 
-let collection = MarketplaceCollection.fromArray(
-    [
-        Marketplace.create('Marketplace 1'),
-        Marketplace.create('Marketplace 2')
-    ]
-);
+const DI = MarketplaceDIContainer.createWithConfig({
+    list: '/list'
+});
+
+(async function () {
+    let marketplaces = DI.getMarketplaceService();
+    let collection = await marketplaces.findMarketplacesByAccountNumber(AccountNo.create('12346'));
+
+    let result = collection.next();
+    while (!result.done) {
+        console.log(result.value);
+        result = collection.next();
+    }
+
+    console.log('Done');
+
+})();
