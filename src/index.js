@@ -5,7 +5,7 @@ const DI = MarketplaceDIContainer.createWithConfig({
     list: '/list'
 });
 
-(async function () {
+(async function (DI) {
     let marketplaces = DI.getMarketplaceService();
 
     for (let marketplace of await marketplaces.findMarketplacesByAccountNumber(AccountNo.create('12346'))) {
@@ -14,4 +14,4 @@ const DI = MarketplaceDIContainer.createWithConfig({
 
     console.log('Done');
 
-})();
+})(DI);
